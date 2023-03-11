@@ -37,9 +37,17 @@ console.log(ourPopulation >= finlandPopulation); //true
 let averagePopulation = 33;
 console.log(ourPopulation <= averagePopulation);
 
-// PROBLEM: Based on thye variables I created, create a new variable "description" which containsa string in this format "Portugal is in Europe, and its 11 million people speak Portguese"
+// PROBLEM: Based on the variables I created, create a new variable "description" which containsa string in this format "Portugal is in Europe, and its 11 million people speak Portguese"
 
-let description = "Nigeria is in Africa, and its 50 million people speak Igbo ";
+let description =
+  myCountry +
+  " is in " +
+  continent +
+  ", and it's " +
+  halfPopulation +
+  " million people speak " +
+  language;
+console.log(description);
 
 // CODING CHALLENGE ON OPERATORS
 /* Problem: 
@@ -82,3 +90,31 @@ console.log(secondMarkBMI, secondJohnBMI); //Output: 26.87867813490267 27.440599
 
 const johnHigherBMI = secondMarkBMI > secondJohnBMI;
 console.log(johnHigherBMI); //Output: false
+
+// STRINGS AND TEMPLATE LITERALS (ES5)
+
+const firstName = "Makis";
+const job = "Student";
+const birthYear = 2001;
+const year = 2023;
+
+// BEFORE ES6
+const makis =
+  "I'm  " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
+console.log(makis);
+
+console.log("Just \n a multiple \n line"); //creating a multi-line
+
+// AFTER ES6
+const newMakis = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+console.log(newMakis);
+
+console.log(`Just a
+ regular 
+ string`); //still creates a multi-line, but simpler
+
+//  ASSIGNMENT ON STRINGS AND TEMPLATE LITERALS (ES5)
+// PROBLEM: Recreate the "description" variable from the last assignment, this time using the template literal syntax
+
+let newDescription = `${myCountry} is in ${continent}, and it's ${halfPopulation} people speaks ${language}`;
+console.log(newDescription);
