@@ -49,7 +49,7 @@ let description =
   language;
 console.log(description);
 
-// CODING CHALLENGE ON OPERATORS
+// CODING CHALLENGE #1 ON OPERATORS
 /* Problem: 
 Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formular: BMI = mass / height ** 2 = mass / (height * height). (mass in kg, height in meter)
 
@@ -72,10 +72,10 @@ const heightJohn = 1.95;
 const massJohn = 92;
 
 const markBMI = massMark / heightMark ** 2;
-const BMIJohn = massJohn / heightJohn ** 2;
-console.log(markBMI, BMIJohn); //Output: 27.309968138370508 24.194608809993426
+const johnBMI = massJohn / heightJohn ** 2;
+console.log(markBMI, johnBMI); //Output: 27.309968138370508 24.194608809993426
 
-const markHigherBMI = markBMI > BMIJohn;
+const markHigherBMI = markBMI > johnBMI;
 console.log(markHigherBMI); //Output: True
 
 // Second Test Data
@@ -118,3 +118,66 @@ console.log(`Just a
 
 let newDescription = `${myCountry} is in ${continent}, and it's ${halfPopulation} people speaks ${language}`;
 console.log(newDescription);
+
+// THE IF/ELSE STATEMENT
+// Asignment
+/* Problem: 
+1. If your country's population is greater than 33 milliom, log a string like this to the console: "Portugal's population is above average". Otherwise, log a string like "Portugual's population is 22 million below average" (the 22 is the average of 33 minus the country's population)
+
+2. After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original
+*/
+
+// Solution:
+if (ourPopulation > 33) {
+  console.log(`${myCountry}'s population is above average`);
+} else {
+  console.log(
+    `${myCountry}'s population is ${
+      ourPopulation - averagePopulation
+    } million below average`
+  );
+} //Output: Nigeria's population is above average. If it was 14.4 million, output = Nigeria's population is 17.6 million below average
+
+// CHALLENGE #2- IF/ELSE STATEMENT
+// Problem:
+/* Use the BMI example from Challenge #1 and the code you wrote to improve it
+1. Print a nice output to the console, saying who has the higher BMI. The message can either be "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
+2.Use a template string to include the BMI values is the outputs. Example: "Mark's BMI (28.3) is higher than John's (23.9)"
+
+HINT: Use and if/else statement
+*/
+
+// Solution
+// 1.
+if (markBMI > johnBMI) {
+  //true
+  console.log(`Mark's BMI is higher than John's!`);
+} else {
+  console.log(`John's BMI is higher than Mark's!`);
+} //  Output: Mark's BMI is higher than John's!
+
+// Second test data
+if (secondMarkBMI > secondJohnBMI) {
+  //false
+  console.log(`Mark's BMI is higher than John's!`);
+} else {
+  console.log(`John's BMI is higher than Mark's!`);
+} // Output: John's BMI is higher than Mark's!
+
+// 2.
+if (markBMI > johnBMI) {
+  console.log(`Mark's BMI (${markBMI}) is higher than John's (${johnBMI})!`);
+} else {
+  console.log(`John's BMI (${johnBMI}) is higher than Mark's (${markBMI})!`);
+} // Output: Mark's BMI (27.309968138370508) is higher than John's (24.194608809993426)!
+
+// Second test data
+if (secondMarkBMI > secondJohnBMI) {
+  console.log(
+    `Mark's BMI (${secondMarkBMI}) is higher than John's (${secondJohnBMI})!`
+  );
+} else {
+  console.log(
+    `John's BMI (${secondJohnBMI}) is higher than Mark's (${secondMarkBMI})!`
+  );
+} // Output: John's BMI (27.44059917355372) is higher than Mark's (26.87867813490267)!
