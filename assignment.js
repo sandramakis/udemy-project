@@ -10,14 +10,14 @@ console.log(ourPopulation);
 
 const isIsland = false;
 console.log(isIsland);
-let language;
+let myLanguage;
 console.log(typeof isIsland); //boolean
 console.log(typeof ourPopulation); //number
-console.log(typeof language); //undefined
+console.log(typeof myLanguage); //undefined
 
 // let, const, var
 // Assign a language to the language variable
-language = "Igbo";
+myLanguage = "Igbo";
 
 // Basic Operators
 // Question: If the Population of my country was split into two, what would be the ourPopulation on one side?
@@ -46,7 +46,7 @@ let description =
   ", and it's " +
   halfPopulation +
   " million people speak " +
-  language;
+  myLanguage;
 console.log(description);
 
 // CODING CHALLENGE #1 ON OPERATORS
@@ -116,7 +116,7 @@ console.log(`Just a
 //  ASSIGNMENT ON STRINGS AND TEMPLATE LITERALS (ES5)
 // PROBLEM: Recreate the "description" variable from the last assignment, this time using the template literal syntax
 
-let newDescription = `${myCountry} is in ${continent}, and it's ${halfPopulation} people speaks ${language}`;
+let newDescription = `${myCountry} is in ${continent}, and it's ${halfPopulation} people speaks ${myLanguage}`;
 console.log(newDescription);
 
 // THE IF/ELSE STATEMENT
@@ -127,7 +127,7 @@ console.log(newDescription);
 2. After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original
 */
 
-// Solution:
+// EXAMPLE:
 if (ourPopulation > 33) {
   console.log(`${myCountry}'s population is above average`);
 } else {
@@ -181,3 +181,30 @@ if (secondMarkBMI > secondJohnBMI) {
     `John's BMI (${secondJohnBMI}) is higher than Mark's (${secondMarkBMI})!`
   );
 } // Output: John's BMI (27.44059917355372) is higher than Mark's (26.87867813490267)!
+
+// TYPE CONVERSION AND COERSION
+// Example:
+
+const inputYear = "1991";
+const inputYearToNumber = `In ${
+  Number(inputYear) + 18
+}, you'll be 18 years old`;
+console.log(inputYearToNumber);
+console.log(Number(inputYear), inputYear + 18);
+
+let number = "2" - 1 - "5" + 2;
+console.log(number);
+
+// ASSIGNMENT: Predict the results of these operations without executing them
+let conversionOne = "9" - "5";
+let conversionTwo = "19" - "13" + "17";
+let conversionThree = "19" - "13" + 17;
+let conversionFour = "123" < 57;
+let conversionfive = 5 + 6 + "4" + 9 - 4 - 2;
+console.log(
+  conversionOne,
+  conversionTwo,
+  conversionThree,
+  conversionFour,
+  conversionfive
+);
