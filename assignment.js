@@ -200,11 +200,32 @@ let conversionOne = "9" - "5";
 let conversionTwo = "19" - "13" + "17";
 let conversionThree = "19" - "13" + 17;
 let conversionFour = "123" < 57;
-let conversionfive = 5 + 6 + "4" + 9 - 4 - 2;
+let conversionFive = 5 + 6 + "4" + 9 - 4 - 2;
 console.log(
   conversionOne,
   conversionTwo,
   conversionThree,
   conversionFour,
-  conversionfive
+  conversionFive
 );
+
+// FALSY AND TRUTHY VALUES
+/* They are values that are inherently false, until proven otherwise
+
+Types of falsy values:- 0, "", undefined, null, Nan
+*/
+
+let school;
+if (school) {
+  console.log(`"My school is UNN"`);
+} else {
+  console.log(`"No!, my school isn't UNN"`);
+} //Whereas school is true, this condition outputs the else ("No!, my school isn't UNN") condition because school is undefined
+
+// Another example
+let price = 0;
+if (price) {
+  console.log(`Price is 0`);
+} else {
+  console.log(`Price is not 0`);
+} // This outputs "Price is not 0", even though the value of price is actually 0. It is a falsy value, and remains that until changed
