@@ -229,3 +229,16 @@ if (price) {
 } else {
   console.log(`Price is not 0`);
 } // This outputs "Price is not 0", even though the value of price is actually 0. It is a falsy value, and remains that until changed
+
+// EQUALITY OPERATORS
+const numNeighbours = Number(
+  prompt("How many neighbour countries does your country have?")
+);
+
+if (numNeighbours === 1) {
+  console.log(`Only 1 border`);
+} else if (numNeighbours >= 1) {
+  console.log(`More than 1 border`);
+} else {
+  console.log(`No border`);
+}
