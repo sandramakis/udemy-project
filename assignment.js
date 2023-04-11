@@ -231,20 +231,20 @@ if (price) {
 } // This outputs "Price is not 0", even though the value of price is actually 0. It is a falsy value, and remains that until changed
 
 // EQUALITY OPERATORS
-const numNeighbours = Number(
-  prompt("How many neighbour countries does your country have?")
-);
+// const numNeighbours = Number(
+//   prompt("How many neighbour countries does your country have?")
+// );
 
-if (numNeighbours === 1) {
-  alert(`Only 1 border`);
-  console.log(`Only 1 border`);
-} else if (numNeighbours >= 1) {
-  alert(`More than 1 border`);
-  console.log(`More than 1 border`);
-} else {
-  alert(`No border`);
-  console.log(`No border`);
-}
+// if (numNeighbours === 1) {
+//   alert(`Only 1 border`);
+//   console.log(`Only 1 border`);
+// } else if (numNeighbours >= 1) {
+//   alert(`More than 1 border`);
+//   console.log(`More than 1 border`);
+// } else {
+//   alert(`No border`);
+//   console.log(`No border`);
+// }
 
 // LOGICAL OPERATORS
 /*PROBLEM: 
@@ -257,4 +257,90 @@ if (myLanguage === "English" && ourPopulation < 50 && isIsland === false) {
   console.log(`You should live in ${myCountry}!`);
 } else {
   console.log(`${myCountry} does not meet your criteria`);
+}
+
+// CODING CHALLENGE
+/*
+There are two gymnastics teams, Dolphins and Koalas. They compete against each other thrice
+=> The winner with the highest average score wins the trophy
+=> Calculate the average score for each team , using the test data below
+ TEST DATA: Dolphins- 96, 108, 89. Koalas- 88, 91, 110
+
+=> Compare the team's average scores to determine the winner and print it to the console
+=> In a case if a draw,output the two teams
+
+BONUS 1: Include a requirement for a minimum score of 100
+BONUS 2: Minimum score also apploes to a draw
+TEST DATA: 
+Dolphines- 97, 112 and 101. Koalas- 109, 95, 123
+Dolphines- 97, 112,101. Koalas: 109,95, 106 
+*/
+
+const dolphinesAverage = (96 + 108 + 89) / 3;
+const koalasAverage = (88 + 91 + 110) / 3;
+
+// Without minimum requirement of 100
+if (dolphinesAverage > koalasAverage) {
+  console.log(`The Dolphins win with an average of ${dolphinesAverage}!`);
+} else if (koalasAverage > dolphinesAverage) {
+  console.log(`The Koalas win with an average of ${koalasAverage}!`);
+} else if (dolphinesAverage === koalasAverage) {
+  console.log(`Both teams win in a draw!`);
+} else {
+  console.log(`No team win!`);
+}
+
+// With minimum requirement of 100
+console.log(dolphinesAverage, koalasAverage);
+if (dolphinesAverage > koalasAverage && dolphinesAverage >= 100) {
+  console.log(`Dolphines win with an average of ${dolphinesAverage}`);
+} else if (koalasAverage > dolphinesAverage && koalasAverage >= 100) {
+  console.log(`Koalas  win with an average of ${dolphinesAverage}`);
+} else if (
+  dolphinesAverage == koalasAverage &&
+  dolphinesAverage >= 100 &&
+  koalasAverage >= 100
+) {
+  console.log(`Both teams win in a draw!`);
+} else {
+  console.log(`No team win because none reached an average of 100 points!`);
+}
+
+// Bonus 1 solution
+const dolphinesAverage2 = (97 + 112 + 101) / 3;
+const koalasAverage2 = (109 + 95 + 123) / 3;
+
+if (dolphinesAverage2 > koalasAverage2 && dolphinesAverage2 >= 100) {
+  console.log(
+    `Dolphines Team win with ${dolphinesAverage} and is greater than 100 average`
+  );
+} else if (koalasAverage2 > dolphinesAverage2 && koalasAverage2 >= 100) {
+  console.log(
+    `Koalas Team win with a ${koalasAverage2} points which is greater than 100!`
+  );
+} else {
+  console.log(`No team win!`);
+}
+
+//BONUS 2
+const dolphinesAverage3 = (97 + 112 + 101) / 3;
+const koalasAverage3 = (109 + 95 + 106) / 3;
+if (dolphinesAverage3 > koalasAverage3 && dolphinesAverage3 > 100) {
+  console.log(
+    `Dolphines Team wins with ${dolphinesAverage3} which is also greater than 100`
+  );
+} else if (koalasAverage3 > dolphinesAverage3 && koalasAverage3 > 100) {
+  console.log(
+    `Koala Team wins with ${koalasAverage3} which is greater than 100`
+  );
+} else if (
+  koalasAverage3 === dolphinesAverage3 &&
+  koalasAverage3 > 100 &&
+  dolphinesAverage3 > 100
+) {
+  console.log(
+    `It's a draw on both teams with ${koalasAverage3} and ${dolphinesAverage3} respectively`
+  );
+} else {
+  console.log(`No team wins! (:`);
 }
