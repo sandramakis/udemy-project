@@ -17,7 +17,7 @@ console.log(typeof myLanguage); //undefined
 
 // let, const, var
 // Assign a language to the language variable
-myLanguage = "Igbo";
+myLanguage = "English";
 
 // Basic Operators
 // Question: If the Population of my country was split into two, what would be the ourPopulation on one side?
@@ -236,9 +236,25 @@ const numNeighbours = Number(
 );
 
 if (numNeighbours === 1) {
+  alert(`Only 1 border`);
   console.log(`Only 1 border`);
 } else if (numNeighbours >= 1) {
+  alert(`More than 1 border`);
   console.log(`More than 1 border`);
 } else {
+  alert(`No border`);
   console.log(`No border`);
+}
+
+// LOGICAL OPERATORS
+/*PROBLEM: 
+=> Sarah is looking for a new country to live in. She wants to live in a country that speaks English, has less than 50 million people and is not an island.
+=> Write an if statement to help Sarah figure out if your country is right for her
+=> If yours is the right country, log a string like this  'You should live in Portugual', if not, log 'Portugual does not meet your criteria'
+*/
+
+if (myLanguage === "English" && ourPopulation < 50 && isIsland === false) {
+  console.log(`You should live in ${myCountry}!`);
+} else {
+  console.log(`${myCountry} does not meet your criteria`);
 }
