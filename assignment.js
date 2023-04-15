@@ -231,20 +231,20 @@ if (price) {
 } // This outputs "Price is not 0", even though the value of price is actually 0. It is a falsy value, and remains that until changed
 
 // EQUALITY OPERATORS
-// const numNeighbours = Number(
-//   prompt("How many neighbour countries does your country have?")
-// );
+const numNeighbours = Number(
+  prompt("How many neighbour countries does your country have?")
+);
 
-// if (numNeighbours === 1) {
-//   alert(`Only 1 border`);
-//   console.log(`Only 1 border`);
-// } else if (numNeighbours >= 1) {
-//   alert(`More than 1 border`);
-//   console.log(`More than 1 border`);
-// } else {
-//   alert(`No border`);
-//   console.log(`No border`);
-// }
+if (numNeighbours === 1) {
+  alert(`Only 1 border`);
+  console.log(`Only 1 border`);
+} else if (numNeighbours >= 1) {
+  alert(`More than 1 border`);
+  console.log(`More than 1 border`);
+} else {
+  alert(`No border`);
+  console.log(`No border`);
+}
 
 // LOGICAL OPERATORS
 /*PROBLEM: 
@@ -343,4 +343,28 @@ if (dolphinesAverage3 > koalasAverage3 && dolphinesAverage3 > 100) {
   );
 } else {
   console.log(`No team wins! (:`);
+}
+
+// THE SWITCH STATEMENT
+switch (myLanguage) {
+  case "Chinese":
+  case "Mandarin":
+    console.log(`MOST number of native speakers`);
+    break;
+  case "Spanish":
+    console.log(`Second place in number of native speakers`);
+    break;
+  case "English":
+    console.log(`3rd place`);
+    break;
+  case "Hindi":
+    console.log(`Number 4`);
+    break;
+  case "Arabic":
+    console.log(`5th most spoken language`);
+    break;
+
+  default:
+    console.log(`Great language too :D`);
+    break;
 }
