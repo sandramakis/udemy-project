@@ -368,3 +368,28 @@ switch (myLanguage) {
     console.log(`Great language too :D`);
     break;
 }
+
+//THE CONDITIONAL (TENERY) OPERATORS
+/* ASSIGNMENT: If your country's population is greater than 33million, use the tenery operator to log a string to the console
+ */
+
+console.log(
+  `${myCountry}'s population is ${
+    ourPopulation > 33 ? "above" : "below"
+  } average`
+);
+
+// CODE CHALLENGE #4
+/* PROBLEM: Build a simple tip calculator for Stephen whose country allows him to tip 15% of the bill between 50-300
+Calculate the bill and output to the console a string containing the bill value, the tip, and the final bill (bill + tip). 
+
+Example: The bill was 275, the tip was 41.25 and the total value 316.25
+*/
+
+const bill = 430;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the final bill is ${
+    bill + tip
+  }`
+);
