@@ -27,3 +27,27 @@ console.log(descLebanon);
 
 const descAccra = describeCountry("Ghana", 70, "Accra");
 console.log(descAccra);
+
+// FUNCTION DECLARATION AND EXPRESSION
+// Return the percentage of the world's population that the given population represents. Eg, China has 1441 million people, so is about 18.2% of the world's population
+
+// FUNCTION DECLARATION
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
+
+const percPortugual = percentageOfWorld1(200);
+const percNigeria = percentageOfWorld1(344);
+const percKenya = percentageOfWorld1(190);
+console.log(percPortugual, percNigeria, percKenya);
+
+// FUNCTION EXPRESSION
+const percentageOfWorld2 = function (population) {
+  return (population / 7900) * 100;
+};
+
+console.log(
+  percentageOfWorld2(200),
+  percentageOfWorld2(530),
+  percentageOfWorld2(910)
+);
