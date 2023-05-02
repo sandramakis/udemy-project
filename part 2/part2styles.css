@@ -19,6 +19,7 @@ header{
     place-items: center;
     background-image: linear-gradient(to left, rgba(55, 0, 255, 0.3), rgba(0, 180, 153, 0.5), rgba(195, 0, 255, 0.227));
     color: #eee;
+    line-height: 100px;
 }
 
 main{
