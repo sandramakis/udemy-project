@@ -105,3 +105,33 @@ const yearsOfRetirement = (birthYear, firstName) => {
 };
 
 console.log(yearsOfRetirement(2001, "Makis"));
+
+// CODE CHALLENGE #1
+/* PROBLEM: The Dolphins and the Koalas are in a competition. One team only wins if their average score is at least double the average score of the other,
+* Use a functon calcAverage to take inputs on the average of each teams 
+Use the checkWinner function with the parenthesis (avgDolphins and avgKoalas) to check for this condition. L
+* Log to the console, the winner in with the score in this way: Koala's win 30 vs 13
+*/
+
+const calcAverage = (a, b, c) => (a + b + c) / 3;
+
+// Test Data 1
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(65, 54, 49);
+
+const checkWinner = (avgDolphins, avgKoalas) => {
+  if (avgDolphins > avgKoalas * 2) {
+    console.log(`Dolphins win (${avgDolphins} vs ${avgKoalas})`);
+  } else if (avgKoalas > avgDolphins * 2) {
+    console.log(`Koalas win (${avgKoalas} vs ${avgDolphins})`);
+  } else {
+    console.log(`No team wins`);
+  }
+};
+
+checkWinner(scoreDolphins, scoreKoalas); // No team wins
+
+// Test Data 2
+scoreDolphins = calcAverage(85, 54, 41);
+scoreKoalas = calcAverage(23, 34, 27);
+checkWinner(scoreDolphins, scoreKoalas); // Dolphins win (60 vs 28)
