@@ -135,3 +135,33 @@ checkWinner(scoreDolphins, scoreKoalas); // No team wins
 scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 checkWinner(scoreDolphins, scoreKoalas); // Dolphins win (60 vs 28)
+
+// INTRODUCTION TO ARRAY
+/* Create an array containi8ng 4 population values of 4 different ciuntries.
+ * Store this array in a variable "populations"
+ * Log to the console whether the array has 4 elements or not (true or false)
+ * Use the function "percentageOfWorld1" to compute the percentage values stored in an array called "percentages".
+ */
+const population2 = [140, 90, 52, 38];
+console.log(Boolean(population2));
+
+const percentages = [
+  percentageOfWorld1(population2[0]),
+  percentageOfWorld1(population2[1]),
+  percentageOfWorld1(population2[2]),
+  percentageOfWorld1(population2[3]),
+];
+console.log(percentages);
+
+// ARRAY METHODS
+const neighbouringCountries = ["Ghana", "Cameroon", "Togo"];
+neighbouringCountries.push("Utopia");
+neighbouringCountries.pop();
+
+neighbouringCountries.includes("Germany")
+  ? console.log("Probably not a central Europena Country :D")
+  : console.log("Region still cool tho");
+
+neighbouringCountries[neighbouringCountries.indexOf("Cameroon")] =
+  "Republic of Cameroon";
+console.log(neighbouringCountries);
