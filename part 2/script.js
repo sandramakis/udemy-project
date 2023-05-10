@@ -165,3 +165,59 @@ neighbouringCountries.includes("Germany")
 neighbouringCountries[neighbouringCountries.indexOf("Cameroon")] =
   "Republic of Cameroon";
 console.log(neighbouringCountries);
+
+// CODE CHALLENGE 2
+/* PROBLEM: Calculate the total bill of customers which includes the tip amount for each bill. For bills greater than or equals 50 but less than or equals to 300, the tip should be 15% of the bill, for others, 20%.
+
+*/
+
+// Create a function that calculates the bill and checks for the condition
+const calcTip = (bill) => {
+  const tipPercentage = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+  return tipPercentage;
+};
+
+const bills = [125, 555, 44]; //initial bill test data
+
+// to calculate the tip amount depending on the bill
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+
+// Calculate the total
+const totalBill = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+console.log(bills, tips, totalBill);
+
+// INTRODUCTION TO OBJECTS
+const myCountry = {
+  country: "South Africa",
+  capital: "Johannesbourg",
+  language: "Xhosa",
+  population: 250,
+  neighbours: ["Zambia", "Gambia", "Mali", "D. R. C"],
+};
+
+// Dot and Bracket Notation
+
+// Use the object to log a strike like this to the console "Finland has 6 million finnish- speaking people, 3 neighoouring countries and a capital called Helsiniki"
+
+console.log(
+  `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`
+);
+// Increase the country's population by 2 million using dot notation
+myCountry.population += 2;
+console.log(myCountry.population);
+
+// Decrease the country's population by 2 million using bracket notation
+myCountry[population] -= 2;
+console.log(myCountry[population]);
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Stephen", "John"],
+};
+
+console.log(
+  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is ${jonas.friends[0]} and ${jonas.friends[2]}`
+);
