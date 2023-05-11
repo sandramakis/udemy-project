@@ -166,7 +166,7 @@ neighbouringCountries[neighbouringCountries.indexOf("Cameroon")] =
   "Republic of Cameroon";
 console.log(neighbouringCountries);
 
-// CODE CHALLENGE 2
+// CODE CHALLENGE #2
 /* PROBLEM: Calculate the total bill of customers which includes the tip amount for each bill. For bills greater than or equals 50 but less than or equals to 300, the tip should be 15% of the bill, for others, 20%.
 
 */
@@ -193,31 +193,57 @@ const myCountry = {
   language: "Xhosa",
   population: 250,
   neighbours: ["Zambia", "Gambia", "Mali", "D. R. C"],
+
+  // Use the object to log a string like this to the console "Finland has 6 million finnish- speaking people, 3 neighoouring countries and a capital called Helsiniki". This time, using the this method
+  describe: function () {
+    return `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}`;
+  },
+  checkIsIsland: function () {
+    this.isIsland = this.neighbours.length === 0 ? true : false;
+    this.isIsland = !Boolean(this.neighbours);
+    return this.isIsland;
+  },
 };
+
+console.log(myCountry["describe"]());
+console.log(myCountry.checkIsIsland()); // false
 
 // Dot and Bracket Notation
 
-// Use the object to log a strike like this to the console "Finland has 6 million finnish- speaking people, 3 neighoouring countries and a capital called Helsiniki"
-
-console.log(
-  `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`
-);
 // Increase the country's population by 2 million using dot notation
 myCountry.population += 2;
 console.log(myCountry.population);
 
 // Decrease the country's population by 2 million using bracket notation
-myCountry[population] -= 2;
-console.log(myCountry[population]);
+myCountry["population"] -= 2;
+console.log(myCountry.population);
 
+// OBJECT METHOD
 const jonas = {
   firstName: "Jonas",
   lastName: "Schmedtmann",
-  age: 2037 - 1991,
+  birthYear: 1991,
   job: "teacher",
   friends: ["Michael", "Peter", "Stephen", "John"],
+  hasDriversLicense: false,
+  calcAge: function () {
+    this.age = 2029 - this.birthYear; //to store the value of this as a new jonas property
+    return this.age;
+  },
+  getSummary: function () {
+    return `${this.firstName} is a ${this.age}-year old ${
+      this.job
+    }, and he has ${
+      this.hasDriversLicense ? "a" : "no"
+    } driver's license. He also has ${this["friends"].length} friends and ${
+      jonas.friends[0]
+    } is his best friend.`;
+  },
 };
 
-console.log(
-  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is ${jonas.friends[0]} and ${jonas.friends[2]}`
-);
+console.log(jonas.calcAge());
+console.log(jonas.age);
+console.log(jonas.getSummary()); //Calling the getSummary function and logging it to the console. Output: Jonas is a 38-year old teacher and he has a driver's license
+
+// Challenge #3
+// PROBLEM: Calculate John Smith and Mark Miller's BMI and retun who's BMI is higher
