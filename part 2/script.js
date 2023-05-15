@@ -32,30 +32,30 @@ console.log(descAccra);
 // Return the percentage of the world's population that the given population represents. Eg, China has 1441 million people, so is about 18.2% of the world's population
 
 // FUNCTION DECLARATION
-function percentageOfWorld1(population) {
+function calcPerc(population) {
   return (population / 7900) * 100;
 }
 
-const percPortugual = percentageOfWorld1(200);
-const percNigeria = percentageOfWorld1(344);
-const percKenya = percentageOfWorld1(190);
+const percPortugual = calcPerc(200);
+const percNigeria = calcPerc(344);
+const percKenya = calcPerc(190);
 console.log(percPortugual, percNigeria, percKenya);
 
 // FUNCTION EXPRESSION
-const percentageOfWorld2 = function (population) {
+const calcPerc2 = function (population) {
   return (population / 7900) * 100;
 };
 
 console.log(
-  percentageOfWorld2(200), // 2.5316455696202533
-  percentageOfWorld2(530), // 6.70886075949367
-  percentageOfWorld2(910) // 11.518987341772153
+  calcPerc2(200), // 2.5316455696202533
+  calcPerc2(530), // 6.70886075949367
+  calcPerc2(910) // 11.518987341772153
 );
 
 // FUNCTION IN ANOTHER FUNCTION
 
 const describePopulation = (country, population) => {
-  const percCountry = percentageOfWorld2(population); //The population parameter here takes the argument passed in the calling of the function describePopulation. percentageOfWorld(population) == describePopulation(population)
+  const percCountry = calcPerc2(population); //The population parameter here takes the argument passed in the calling of the function describePopulation. percentageOfWorld(population) == describePopulation(population)
   return `${country} has ${population} million people which is about ${percCountry} of the world.`;
 };
 
@@ -140,16 +140,16 @@ checkWinner(scoreDolphins, scoreKoalas); // Dolphins win (60 vs 28)
 /* Create an array containi8ng 4 population values of 4 different ciuntries.
  * Store this array in a variable "populations"
  * Log to the console whether the array has 4 elements or not (true or false)
- * Use the function "percentageOfWorld1" to compute the percentage values stored in an array called "percentages".
+ * Use the function "calcPerc" to compute the percentage values stored in an array called "percentages".
  */
 const population2 = [140, 90, 52, 38];
 console.log(Boolean(population2));
 
 const percentages = [
-  percentageOfWorld1(population2[0]),
-  percentageOfWorld1(population2[1]),
-  percentageOfWorld1(population2[2]),
-  percentageOfWorld1(population2[3]),
+  calcPerc(population2[0]),
+  calcPerc(population2[1]),
+  calcPerc(population2[2]),
+  calcPerc(population2[3]),
 ];
 console.log(percentages);
 
@@ -281,3 +281,30 @@ if (mark.bmi > john.bmi) {
     `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`
   );
 }
+
+// THE FOR LOOP
+for (let i = 1; i <= 50; i++) {
+  console.log(`Voter number ${i} is currently voting`);
+}
+
+function calcPerc(population) {
+  return (population / 7900) * 100;
+}
+
+/* Use the previous percentage popuulation to create a new array containing the percentage of the country's population in the world
+ ** Use the calcPerc function created earlier
+ ** Confirm that the percentages2 contains exactly the same values as the percventages array created manually*/
+
+const percentages2 = [];
+const percentages3 = [];
+const population3 = [200, 910, 502, 138];
+
+for (let i = 0; i < population2.length; i++) {
+  percentages2[i] = calcPerc2(population2[i]);
+
+  // OR
+  const perc = calcPerc2(population3[i]);
+  percentages3.push(perc);
+}
+
+console.log(percentages2, percentages3, population2, population3);
