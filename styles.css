@@ -25,3 +25,21 @@ main{
     text-align: center;
     padding: 10rem 0;
 }
+
+button{
+    margin: 50px 5px;
+    background-color: cornflowerblue;
+    padding: 10px;
+    border: 0;
+    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: .9;
+}
+
+button a{
+    color: #eee;
+    text-decoration: none;
+}
