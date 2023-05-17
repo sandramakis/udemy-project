@@ -308,3 +308,23 @@ for (let i = 0; i < population2.length; i++) {
 }
 
 console.log(percentages2, percentages3, population2, population3);
+
+// Looping backwards and Loops in Loops
+/** Create an Array of Array conyaining countries.
+ * Log only the countries to the console, one by one
+ * Log a string like "Neighbour: Canada"
+ */
+const listOfNeighbours = [
+  ["Canada", "Mexico"],
+  ["Spain"],
+  ["Norway", "Sweden", "Russia"],
+];
+
+console.log(listOfNeighbours);
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+  for (let y = 0; y < listOfNeighbours[i].length; y++) {
+    // console.log(listOfNeighbours[i][y]);
+    console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
+  }
+}
