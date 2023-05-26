@@ -291,23 +291,21 @@ function calcPerc(population) {
   return (population / 7900) * 100;
 }
 
-/* Use the previous percentage popuulation to create a new array containing the percentage of the country's population in the world
+/* Use the previous percentage population to create a new array containing the percentage of the country's population in the world
  ** Use the calcPerc function created earlier
  ** Confirm that the percentages2 contains exactly the same values as the percventages array created manually*/
 
 const percentages2 = [];
-const percentages3 = [];
-const population3 = [200, 910, 502, 138];
 
 for (let i = 0; i < population2.length; i++) {
   percentages2[i] = calcPerc2(population2[i]);
 
   // OR
-  const perc = calcPerc2(population3[i]);
-  percentages3.push(perc);
+  const perc = calcPerc2(population2[i]);
+  percentages2.push(perc);
 }
 
-console.log(percentages2, percentages3, population2, population3);
+console.log(percentages2, population2);
 
 // Looping backwards and Loops in Loops
 /** Create an Array of Array conyaining countries.
@@ -328,3 +326,19 @@ for (let i = 0; i < listOfNeighbours.length; i++) {
     console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
   }
 }
+
+// WHILE LOOP
+/*
+ *Recreate the challenge from the lecture:Looping thriugh arrays, but this time using a while loop (call the array "percentages3 ")
+ * Reflect on what solution you like better for the task ()
+ */
+
+const percentages3 = [];
+const population3 = [100, 910, 502, 178];
+let i = 0;
+while (i < population3.length) {
+  let perc = calcPerc2(population3[i]);
+  percentages3.push(perc);
+  i++;
+}
+console.log(population3, percentages3);
