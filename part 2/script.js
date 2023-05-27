@@ -109,32 +109,39 @@ console.log(yearsOfRetirement(2001, "Makis"));
 // CODE CHALLENGE #1
 /* PROBLEM: The Dolphins and the Koalas are in a competition. One team only wins if their average score is at least double the average score of the other,
 * Use a functon calcAverage to take inputs on the average of each teams 
-Use the checkWinner function with the parenthesis (avgDolphins and avgKoalas) to check for this condition. L
+Use the checkWinner function with the parenthesis (scoreDolphins and scoreKoalas) to check for this condition. 
 * Log to the console, the winner in with the score in this way: Koala's win 30 vs 13
 */
 
-const calcAverage = (a, b, c) => (a + b + c) / 3;
-
-// Test Data 1
-let scoreDolphins = calcAverage(44, 23, 71);
-let scoreKoalas = calcAverage(65, 54, 49);
-
-const checkWinner = (avgDolphins, avgKoalas) => {
-  if (avgDolphins > avgKoalas * 2) {
-    console.log(`Dolphins win (${avgDolphins} vs ${avgKoalas})`);
-  } else if (avgKoalas > avgDolphins * 2) {
-    console.log(`Koalas win (${avgKoalas} vs ${avgDolphins})`);
-  } else {
-    console.log(`No team wins`);
+const calcAverage = function (arr) {
+  // I changed the pre-existing function to this universal one from the "Challenge #4" so that'll run regardless of the value(number or array) and be called anywhere in the code
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
   }
+  return sum / arr.length;
 };
 
-checkWinner(scoreDolphins, scoreKoalas); // No team wins
+// Test Data 1 ** ScoreDolphins: 44, 23, 71 and ScoreKoalas: 65, 54, 49;
+let scoreDolphins = calcAverage([44, 23, 71]); // 46
+let scoreKoalas = calcAverage([65, 54, 49]); // 56
 
-// Test Data 2
-scoreDolphins = calcAverage(85, 54, 41);
-scoreKoalas = calcAverage(23, 34, 27);
-checkWinner(scoreDolphins, scoreKoalas); // Dolphins win (60 vs 28)
+console.log(scoreDolphins, scoreKoalas);
+
+// One team only wins if their average score is at least double the average score of the other
+if (scoreDolphins > scoreKoalas * 2) {
+  console.log(`Dolphins win (${scoreDolphins} vs ${scoreKoalas})`);
+} else if (scoreKoalas > scoreDolphins * 2) {
+  console.log(`Koalas win (${scoreKoalas} vs ${scoreDolphins})`);
+} else {
+  console.log(`No team wins`);
+} //Output: No team wins
+
+// ** Test Data 2
+scoreDolphins = calcAverage([85, 54, 41]); // 60
+scoreKoalas = calcAverage([23, 34, 27]); // 28
+
+console.log(scoreDolphins, scoreKoalas); // Dolphins win (60 vs 28)
 
 // INTRODUCTION TO ARRAY
 /* Create an array containi8ng 4 population values of 4 different ciuntries.
@@ -342,3 +349,24 @@ while (i < population3.length) {
   i++;
 }
 console.log(population3, percentages3);
+
+// CODING CHALLENGE #4
+/*  *Let's improve Steve's calculator even more, this time using loops
+ */
+
+const newBills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const newTips = [];
+const total = [];
+
+for (let i = 0; i < newBills.length; i++) {
+  let tip = calcTip(newBills[i]); // Calculate the tip value of each bill
+  newTips.push(tip); //  Add the value to the empty 'newTips' array
+  total.push(tip + newBills[i]); // to get the total score, add the current tip value with the current bill value
+}
+console.log(newTips, total);
+
+/* BONUS: Calculate the average of the total money array
+ * To do this, use a calcAverage function that'll take inputs and divide by the length of the input */
+
+// The calcAverage() will be used from the already declared function on LINE 116
+console.log(calcAverage(total));
