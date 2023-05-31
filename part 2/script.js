@@ -370,3 +370,67 @@ console.log(newTips, total);
 
 // The calcAverage() will be used from the already declared function on LINE 116
 console.log(calcAverage(total));
+
+// PROBLEM SOLVING in JS
+/*PROBLEM: We work for a company building a smart home termometer. Our most recent task is this: "Given an array of temperatures of one day, calculate the temperature amplitude. Keep in mind that sometimes there may be a censor error
+
+*NOTE: Major problem solving steps
+ * 1. Understanding the problem
+ ** First understand that amplitude is the result of max - min
+
+ 
+ * 2. Dividing the problem into sub-problems
+ ** Find the max
+ ** Find the min
+ ** Calculate the amplitude
+ */
+/** A client tells you to calculate get the result of the value of the minimum number in an array from the max value having in mind to check for errors */
+
+let temperatures = [-3, -6, -1, "error", 10, 1, 17, 5];
+
+const calcTempAltitude = function (temp) {
+  let max = temp[0];
+  let min = temp[0];
+  for (let i = 0; i < temp.length; i++) {
+    const currTemp = temp[i];
+    if (typeof currTemp !== "number") continue;
+
+    if (currTemp < min) min = currTemp;
+    if (currTemp > max) max = currTemp;
+  }
+  console.log(max, min);
+  return max - min;
+};
+
+const amplitude = calcTempAltitude(temperatures);
+console.log(amplitude);
+
+// * Problem: The Project Manager now tells us the function should receive two arrays and not just one. The rest of the functions should work the same
+/**Note: We don't need to write the function again, we just need to passin a new parameter and concatenate 
+ * 1. Understanding the problem: 
+ ** Write the same function, but with two parameters
+
+ 2. Dividing the problem into sub-problems
+ ** Concatenate the two parameters 
+ ** Loop through the result of the concatenation
+*/
+
+const calcTempAltitudeNew = function (t1, t2) {
+  const temp = t1.concat(t2); //since we're using a new set of variable, we now concatenate the two parameters and loop through them, just like we did previously
+  console.log(temp);
+
+  let max = temp[0];
+  let min = temp[0];
+  for (let i = 0; i < temp.length; i++) {
+    const currTemp = temp[i];
+    if (typeof currTemp !== "number") continue; // If the current temperature is an error, the loop should end here, and move to the next temperature
+
+    if (currTemp < min) min = currTemp;
+    if (currTemp > max) max = currTemp;
+  }
+  console.log(max, min);
+  return max - min;
+};
+
+const amplitudeNew = calcTempAltitudeNew([3, 9, 2], [6, 2, 7]);
+console.log(amplitudeNew);
