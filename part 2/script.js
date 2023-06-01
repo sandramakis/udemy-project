@@ -434,3 +434,26 @@ const calcTempAltitudeNew = function (t1, t2) {
 
 const amplitudeNew = calcTempAltitudeNew([3, 9, 2], [6, 2, 7]);
 console.log(amplitudeNew);
+
+// PROBLEM SOLVING CHALLENGE
+/**Problem: Given an array of maximum temperatures, the termometer displays a string with these temperatures
+ * Create a function "printforcast" which takes in an array (arr) and logs a string like "... 17C in 1 days ...21C in 2 days ... 23C in 3 days"
+ * Use the problem solving framework
+ * Test Data 1:[17, 21, 23]
+ * TEST DATA 2: [12, 3, -5, 0, 4]
+ */
+
+// 1) Understanding the problem
+// "... 17C in 1 days ...21C in 2 days ... 23C in 3 days"
+const data1 = [17, 21, 23];
+const data2 = [12, 3, -5, 0, 4];
+
+const printforcast = function (arr) {
+  let str = ""; //create an empty string to store the new value inside
+  for (let i = 0; i < arr.length; i++) {
+    str += `${arr[i]}C in ${i + 1} days ...`; // For each iteraton, we want to add the value with the index=> i + (i + 1)
+  }
+  console.log("..." + str);
+};
+printforcast(data1);
+printforcast(data2);
