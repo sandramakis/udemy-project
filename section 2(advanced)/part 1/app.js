@@ -102,6 +102,7 @@ console.log(restaurant.starterMenu);
 console.log(firstMenu, secondMenu);
 
 // Changing the valueName of two different values
+
 // Old method
 // const changedMenu = restaurant.menu;
 // firstMenu = secondMenu;
@@ -142,9 +143,9 @@ console.log(...makis); //'"M' 'a' 'k' 'i' 's'"
 
 // Using the spread method in a function
 const ingredients = [
-  // prompt("Let's take your order! \nIngredient 1?"),
-  // prompt("ingredient 2?"),
-  // prompt("ingredient 3?"),
+  // prompt("Let's take your order! \n Ingredient 1?"),
+  // prompt("Ingredient 2?"),
+  // prompt("Ingredient 3?"),
 ];
 console.log(ingredients);
 
@@ -164,7 +165,7 @@ console.log(weekends);
 console.log(fri);
 
 // Using the rest operators in a function
-const add = function (...numbers) {
+const addFctn = function (...numbers) {
   console.log(numbers);
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
@@ -172,12 +173,12 @@ const add = function (...numbers) {
 };
 
 // The rest operator passed in a function accomodates any length of value and still runs the function
-add(1, 7, 4);
-add(4.7, 20, 2, 7, 9, 1);
-add(8, 34, 6, 9, 3, 5);
+addFctn(1, 7, 4);
+addFctn(4.7, 20, 2, 7, 9, 1);
+addFctn(8, 34, 6, 9, 3, 5);
 
 const p = [13, 4, 9];
-add(...p);
+addFctn(...p);
 
 restaurant.orderPizza("beef", " sausage", " macaroni", " olive");
 
@@ -200,7 +201,7 @@ console.log(3 && "Makis" && null && undefined); //output- null
 
 // LOGICAL OPERATORS
 const rest1 = {
-  name: "Chitis",
+  name: "Sogo Emperioum",
   numGuests: 18,
 };
 
@@ -214,8 +215,8 @@ rest1.numGuests = rest1.numGuests || 5;
 rest2.numGuests = rest2.numGuests || 5;
 
 // new method
-rest1.numGuests ||= 5;
-rest2.numGuests ||= 5;
+rest1.numGuests ||= 5; ///18
+rest2.numGuests ||= 5; //5
 console.log(rest1, rest2);
 
 // NULLISH assignment operator (null and undefined, NOT 0 and "")
@@ -239,3 +240,96 @@ console.log(rest3, rest4);
 rest4.owner &&= "Anonymous";
 rest3.owner ||= "Unknown";
 console.log(rest3, rest4);
+
+// CODE CHALLENGE
+// A football betting game
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrusia Dortmond",
+  players: [
+    [
+      "Neuer",
+      "Ligt",
+      "Pavard",
+      "Davies",
+      "Kimmich",
+      "Wanner",
+      "Laimer",
+      "Ibrahimovic",
+      "Muller",
+      "Hummels",
+      "Lewandoski",
+    ],
+    [
+      "Kobel",
+      "Sule",
+      "Hummels",
+      "Schulz",
+      "Reus",
+      "Ryerson",
+      "Wolf",
+      "Adeyemi",
+      "Gittens",
+      "Hazard",
+      "Moukoko",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandoski", "Kimmich", "Lewandoski", "Hummels"],
+  date: "June 10th, 2023",
+  odd: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// 1. Create one player array for each teams
+const [players1, players2] = game.players;
+console.log(players1, players2);
+
+// 2. Create one variable with the goalkeeper's name and another containing all the other field players
+const [players1Gk, ...fieldPlayers1] = players1;
+const [players2Gk, ...fieldPlayers2] = players2;
+// console.log(players1Gk, fieldPlayers, players2Gk, fieldPlayers2);
+
+// 3.  Create an array containing all players of both teams
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+//4. During the game, team 1used 3 players. Create an array containing all the original teams plus Thiago, Coutinho and Perisic
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+console.log(players1Final);
+
+// 5. Based on the odd Object, create one variable for each odd (called team1, draw and team2)S
+const {
+  odd: { team1: team1Odd, x: draw, team2: team2Odd },
+} = game;
+console.log(team1Odd, draw, team2Odd); // 1.33 3.25 6.5
+
+// 6. Write a function (printGoals) that receives an arbitrary number of goals depending on the players that scored
+const printGoals = function (...scorers) {
+  console.log(`${scorers.length} goals were scored`);
+  console.log(...scorers);
+};
+
+// Calling the function
+printGoals("Ligt", "Pavard");
+printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
+printGoals(...game.scored);
+
+// 7. The team with a lower odd is more likely to win. Without using the if/else statement or the ternary operator, log to the console the team most likely to win
+/** SOLUTION
+ * We used the && operator since it returns the last evaluation when no false has been found
+ */
+team1Odd < team2Odd && console.log("Team 1 is more likely to win"); //
+team2Odd < team1Odd && console.log("Team 2  is more likely to win");
+
+// THE FOR OF LOOP
+
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+for (const [i, el] of menu.entries()) {
+  console.log(`Item ${i + 1} on the Menu is ${el}`);
+}
