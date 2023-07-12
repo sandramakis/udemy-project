@@ -16,40 +16,47 @@ console.log(x, y, z);
 const [, q, t] = arr;
 console.log(q, t);
 
+// ES6 Object Literals
+const weekDays = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+
+const hoursOpen = {
+  [weekDays[4]]: {
+    open: 0,
+    close: 23,
+  },
+
+  [weekDays[5]]: {
+    open: 12,
+    close: 24,
+  },
+
+  [weekDays[6]]: {
+    open: 10,
+    close: 22,
+  },
+};
+
 const restaurant = {
   name: "Chitis",
   location: "Inside school, UNN",
   categories: ["Italian", "Nigerian", "Ghanaian"],
-  starterMenu: ["egg", "bread", "milkshake", "icecream"],
+  starterMenu: ["egg", "bread", "milkshake", "icecream", "smoothie"],
   mainMenu: ["rice", "spag", "egusi", "indomie"],
-  order: function (starterIndex, mainIndex) {
+  hoursOpen, //allows for an object to be called from outside a function
+
+  // ES6 Object-function literal allows for us to use function expression without using the "function" keyword
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  openingHours: {
-    fri: {
-      open: 10,
-      close: 23,
-    },
 
-    sat: {
-      open: 12,
-      close: 24,
-    },
-
-    sun: {
-      open: 10,
-      close: 22,
-    },
-  },
-
-  orderDelivery: function ({ starterIndex, mainIndex, address, time }) {
+  orderDelivery({ starterIndex, mainIndex, address, time }) {
     console.log(this.starterMenu[starterIndex]);
     console.log(
       `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} to be delivered at ${address} by ${time}.`
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here's your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
 
@@ -69,20 +76,20 @@ restaurant.orderDelivery({
 });
 
 // *** Destructuring Objects
-const { name, openingHours, categories } = restaurant;
+// const { name, hoursOpen, categories } = restaurant;
 
 // changing to a default variable
 const {
   name: restaurantName,
-  openingHours: hoursAvailable,
+  hoursOpen: hoursAvailable,
   categories: foodTags,
 } = restaurant;
 console.log(restaurantName, hoursAvailable, foodTags);
 
 const {
-  fri: { open, close },
+  [weekDays[4]]: { open: friOpen, close: friClose },
 } = hoursAvailable;
-console.log(open, close);
+console.log(friOpen, friClose);
 
 // mutating variables
 
@@ -160,7 +167,7 @@ const [l, m, n, ...others] = arrr;
 console.log(l, m, n, others);
 
 // rest operators in Object
-const { fri, ...weekends } = restaurant.openingHours;
+const { fri, ...weekends } = restaurant.hoursOpen;
 console.log(weekends);
 console.log(fri);
 
@@ -193,7 +200,7 @@ restaurant.guest = 23;
 const guests2 = restaurant.guest || 10;
 console.log(guests2);
 
-// AND short circuiting (&& picks the FALSY value first)
+// AND (&&) short circuiting (&& picks the first FALSY value )
 console.log(0 && "Makis"); // output- 0
 console.log("Makis" && ""); //output- ""
 console.log(undefined && null); //output- undefined
@@ -219,7 +226,7 @@ rest1.numGuests ||= 5; ///18
 rest2.numGuests ||= 5; //5
 console.log(rest1, rest2);
 
-// NULLISH assignment operator (null and undefined, NOT 0 and "")
+// NULLISH assignment operator (??) =>> null and undefined, NOT 0 and ""
 const rest3 = {
   name: "Chitis",
   numGuests: 0,
@@ -241,7 +248,7 @@ rest4.owner &&= "Anonymous";
 rest3.owner ||= "Unknown";
 console.log(rest3, rest4);
 
-// CODE CHALLENGE
+// CODE CHALLENGE #1
 // A football betting game
 
 const game = {
@@ -332,4 +339,48 @@ const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 
 for (const [i, el] of menu.entries()) {
   console.log(`Item ${i + 1} on the Menu is ${el}`);
+}
+
+// OPTIONAL CHAINING (?.)
+console.log(
+  restaurant.order(3, 2)?.delivery?.open ||
+    "There's no order like that in the menu"
+);
+
+console.log(restaurant.hoursOpen?.thur?.open);
+
+// on Arrays
+const days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+
+for (const day of days) {
+  const closedMessage = `We are closed on ${day}`;
+  // const openMessage = `We are open on ${day} at ${restaurant.hoursOpen[day]?.open}`;
+  const open = restaurant.hoursOpen[day]?.open ?? closedMessage;
+  console.log(open);
+}
+
+// on methods
+console.log(restaurant?.order(2, 1) ?? "This food isn't on our menu");
+
+// ITERATING THROUGH OBJECT(key and value)
+// On keys ==>> This returns the property names of the object in an array
+console.log(Object.keys(restaurant.hoursOpen));
+
+const properties = Object.keys(restaurant.hoursOpen);
+
+for (const day of properties) {
+  console.log(`The restaurant is open on ${day}`);
+}
+
+// On VALUES ==>> Returns the values of the key
+console.log(Object.values(restaurant.hoursOpen));
+const value = Object.values(restaurant.hoursOpen);
+for (const key of value) {
+  console.log(key);
+}
+
+// On both keys and values ==>> the entries() returns the both in an array
+const store = Object.entries(restaurant.hoursOpen);
+for (const [key, { open, close }] of store) {
+  console.log(`On ${key}, we open at ${open} and close at ${close}`);
 }
