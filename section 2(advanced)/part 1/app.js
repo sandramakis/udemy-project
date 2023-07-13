@@ -362,7 +362,7 @@ for (const day of days) {
 // on methods
 console.log(restaurant?.order(2, 1) ?? "This food isn't on our menu");
 
-// ITERATING THROUGH OBJECT(key and value)
+// ITERATING THROUGH OBJECT (key and value)
 // On keys ==>> This returns the property names of the object in an array
 console.log(Object.keys(restaurant.hoursOpen));
 
@@ -383,4 +383,45 @@ for (const key of value) {
 const store = Object.entries(restaurant.hoursOpen);
 for (const [key, { open, close }] of store) {
   console.log(`On ${key}, we open at ${open} and close at ${close}`);
+}
+
+// CODE CHALLENGE #2
+// Continuing the football betting app
+// 1. Loop over the game.scored arr and print each player's name to the console along with the goal number. (Eg: 'Goal 1: Lewandoski)
+
+// Since game.scored is an array, we use the entries()
+for (const [key, scorer] of game.scored.entries()) {
+  console.log(`Goal ${Number(key) + 1}: ${scorer}`);
+}
+
+// 2. Use a loop to calculate the average odd and log it to the console
+const odds = Object.values(game.odd);
+
+let sum = 0;
+let average = 0;
+for (let i = 0; i < odds.length; i++) {
+  sum += odds[i];
+  average = sum / odds.length;
+}
+console.log(average.toFixed(2));
+
+// OORRR
+// for (const odd of Object.values(game.odd)) {
+//   //since odds is an object, we use the Object.entries()
+//   console.log(odd.length);
+//   average += odd;
+// }
+// average /= odds.length;
+// console.log(average);
+
+// 3.
+/**
+ * Print the 3 odds to the console but in a nice formatted way like this * 'Odd of victory Bayern Munich: 1.33'
+ * 'Odd of draw: 3.25'
+ * 'Odd of victory Borrusia Dortmond: 6.5'
+ */
+
+for (const [team, odd] of Object.entries(game.odd)) {
+  const teamStr = team === "x" ? "draw" : `victory of ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
 }
