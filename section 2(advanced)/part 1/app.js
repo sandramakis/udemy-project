@@ -471,12 +471,57 @@ for (const [key, value] of question) {
 }
 
 // Prompt to get the answer from user
-const answer = Number(prompt("Your answer?"));
+// const answer = Number(prompt("Your answer?"));
+const answer = 3;
 if (typeof answer === "number") {
   console.log(answer);
 } else console.log("Please input a number!");
 
-// Return if the answer is right or wrong
+// Return the answer if right or wrong
 if (answer === question.get("correct")) {
   console.log(question.get(true));
 } else console.log(question.get(false));
+
+// ORRR IN A NEATER WAY
+console.log(question.get(answer === question.get("correct"))); //returns the property of true based on wether the condition
+
+// CODE CHALLENGE #3
+// We're continuing with our football game
+
+const gameEvents = new Map([
+  [17, "⚽ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🟨 Yellow Card"],
+  [69, "🟥 Red Card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽ GOAL"],
+  [80, "⚽ GOAL"],
+  [92, "🟨 Yellow Card"],
+]);
+
+// 1. Create an array 'events' of the different games that happened (no duplicates)
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2. At the end of the game, VAR discovered the Yellow Card from minute 64 was unfair. Remove this event from the event log
+gameEvents.delete(64);
+
+// 3. Print this string to the console "An event happened, on average, every 9 minutes (calculating the average) from hpw long the game lasted
+
+const footballFullTime = [...gameEvents.keys()].pop();
+const averageEvent = () => {
+  console.log(
+    `An event happened, on average, every ${
+      footballFullTime / gameEvents.size
+    } minutes `
+  );
+};
+averageEvent();
+
+// 4. Loop over the events and log them to the console marking whether it's in the first half or second
+for (const [min, event] of gameEvents) {
+  console.log(`[${min <= 45 ? "FIRST" : "SECOND"} HALF] ${min}: ${event}`);
+}
