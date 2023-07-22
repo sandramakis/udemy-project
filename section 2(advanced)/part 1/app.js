@@ -425,3 +425,58 @@ for (const [team, odd] of Object.entries(game.odd)) {
   const teamStr = team === "x" ? "draw" : `victory of ${game[team]}`;
   console.log(`Odd of ${teamStr}: ${odd}`);
 }
+
+// SETS ==> Unique sets of data
+
+const orderSets = new Set([
+  "Bread",
+  "Pizza",
+  "Bread",
+  "Icecream",
+  "Pizza",
+  "Icecream",
+]);
+
+console.log(orderSets); //Output:-'Bread', 'Pizza', 'Icecream
+console.log(orderSets.add("Sharwarma"));
+console.log(orderSets.size);
+console.log(orderSets.delete("Bread"));
+// console.log(orderSets.size("Sharwarma"));
+
+// Using sets to loop through an array
+const staff = ["Chef", "Manager", "Waiter", "Manager", "Waiter", "Chef"];
+console.log(new Set(staff)); //'Chef', 'Manager', 'Waiter'
+
+// Using sets to loop though arrays
+console.log(new Set("sandranwakeze"));
+
+// MAPS ==>> A data structure to map values to keys (It takes value types including numbers and booleans)
+// NOTE: the set() can also be used to add new key and value
+
+// Quiz App
+const question = new Map([
+  ["question", " What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct 🎉"],
+  [false, "Try again 🔁"],
+]);
+console.log(question);
+
+// Return the options in a nicely formatted way
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+// Prompt to get the answer from user
+const answer = Number(prompt("Your answer?"));
+if (typeof answer === "number") {
+  console.log(answer);
+} else console.log("Please input a number!");
+
+// Return if the answer is right or wrong
+if (answer === question.get("correct")) {
+  console.log(question.get(true));
+} else console.log(question.get(false));
