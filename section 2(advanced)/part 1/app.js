@@ -525,3 +525,56 @@ averageEvent();
 for (const [min, event] of gameEvents) {
   console.log(`[${min <= 45 ? "FIRST" : "SECOND"} HALF] ${min}: ${event}`);
 }
+
+// WORKING WITH STRINGS
+
+const airline = "Ethiopian Airline, Niger";
+
+console.log(airline[4]); // ==> o
+console.log(airline.indexOf("a")); //Returns the first index of a. ==> - 7
+console.log(airline.indexOf(" ")); // ==> - 9
+console.log(airline.lastIndexOf("e")); //output- 22
+console.log(airline.slice(3)); // ==> iopian Airline, Niger
+console.log(airline.slice(10, 17)); // ==> - Airline
+console.log(airline.slice(-2)); // ==> - ia
+console.log(airline.slice(10, -5)); // ==> Airline,
+
+// Fetching strings when unknown. Eg: the first and last words of a given sentence
+console.log(airline.slice(0, airline.indexOf(" "))); // ==> First word
+console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // ==>Last word
+
+// Task: Log to the console wether a passenger got a middle seat or not
+const checkMiddleSeat = (seat) => {
+  // B and E are the middle seats
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") console.log("You got a middle seat 😑");
+  else console.log("You got lucky! 😎");
+};
+
+checkMiddleSeat("13B");
+checkMiddleSeat("27C");
+checkMiddleSeat("14E");
+
+//Working with Strings
+const airPlane = "Ibom Airneo";
+console.log(airPlane.includes("bom")); //true
+console.log(airPlane.startsWith("air")); //false
+console.log(airPlane.endsWith("neo")); //true
+console.log(airPlane.toLowerCase()); //ibom airneo
+console.log(airPlane.toUpperCase()); // IBOM AIRNEO
+console.log(airPlane.replace("Ib", "Ak")); //Abom Airneo
+console.log(airPlane.replace("Ibom Airneo", "Air Peace")); //Air Peace
+console.log();
+console.log(airPlane.trim()); //Abom Airneo
+
+// checking a passenger's baggage
+const checkInPassenger = function (item) {
+  const baggage = item.toLowerCase();
+  if (baggage.includes("gun") || baggage.includes("knife")) {
+    console.log("You're not allowed to board");
+  } else console.log("Welcome aboard");
+};
+
+checkInPassenger("I have a socks, clothes and Gun for protection");
+checkInPassenger("Tissues and food");
+checkInPassenger("Just a pen Knife and laptop");
