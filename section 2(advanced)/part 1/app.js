@@ -578,3 +578,57 @@ const checkInPassenger = function (item) {
 checkInPassenger("I have a socks, clothes and Gun for protection");
 checkInPassenger("Tissues and food");
 checkInPassenger("Just a pen Knife and laptop");
+
+// split and join ()
+console.log("a+very+nice+string".split(" "));
+console.log("makis amaka".split(" "));
+// console.log("makis chiamaka nwakezee".split(" "));
+
+const [firstName, middleName] = "Chiamaka Sandra".split(" ");
+const nameStr = ["Miss.", firstName, middleName.toUpperCase()].join(" ");
+console.log(nameStr);
+
+// Captialize the first letters of given input names
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+
+  for (let n of names) {
+    n = n.toLowerCase(); //change all words to lower case
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(" "));
+};
+
+capitalizeName("joAna adaM smIth cHriS");
+capitalizeName("jAden brown");
+capitalizeName("ChiNeCherem mEeknEsS");
+
+// Padding a string
+const message = "Go to gate 23";
+console.log(message.padStart(20, "> ").padEnd(30, " >"));
+console.log(message.padEnd(29, "< "));
+
+// Mask the last 4 numbers of an ATM
+const maskATM = function (digits) {
+  const str = digits + ""; //converts to string
+  const lastNumber = str.slice(-4);
+  console.log(lastNumber.padStart(str.length, "*"));
+};
+
+maskATM(12789046);
+maskATM(1234567892549);
+maskATM(7751848962898802);
+
+// Repeat ()
+
+const badWeatherMessage = "Bad weather, all depature delayed... ";
+console.log(badWeatherMessage.repeat(3));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${"✈".repeat(n)}`);
+};
+
+planesInLine(7);
+planesInLine(8);
+planesInLine(12);
