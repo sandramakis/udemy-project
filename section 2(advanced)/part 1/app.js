@@ -532,7 +532,7 @@ const airline = "Ethiopian Airline, Niger";
 
 console.log(airline[4]); // ==> o
 console.log(airline.indexOf("a")); //Returns the first index of a. ==> - 7
-console.log(airline.indexOf(" ")); // ==> - 9
+console.log(airline.indexOf(" ")); // ==>  9
 console.log(airline.lastIndexOf("e")); //output- 22
 console.log(airline.slice(3)); // ==> iopian Airline, Niger
 console.log(airline.slice(10, 17)); // ==> - Airline
@@ -595,7 +595,7 @@ const capitalizeName = function (name) {
 
   for (let n of names) {
     n = n.toLowerCase(); //change all words to lower case
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    namesUpper.push(n.replace(n[1], n[1].toUpperCase()));
   }
   console.log(namesUpper.join(" "));
 };
@@ -632,3 +632,60 @@ const planesInLine = function (n) {
 planesInLine(7);
 planesInLine(8);
 planesInLine(12);
+
+// CODE CHALLENGE #4
+
+// Adding the text area to the DOM
+const mainTag = document.querySelector("main");
+mainTag.append(document.createElement("textarea"));
+mainTag.append(document.createElement("button"));
+
+const button = document.querySelector("button");
+
+// change to camelcase fctn
+const snakeToCamelCase = function (input) {
+  const split = input.split("_");
+  console.log(split);
+  const words = [];
+
+  for (const w of split) {
+    const all = w.replace(w[0], w[0].toUpperCase()); // Output => MyNameIs
+    words.push(all);
+  }
+
+  const joined = words.join(""); //join the words in the array
+  const result = joined.replace(joined[0], joined[0].toLowerCase());
+  console.log(result);
+  return result;
+};
+
+// call snakeToCamelCase()
+snakeToCamelCase("my_name_is");
+snakeToCamelCase("i_am_a_student");
+snakeToCamelCase("and_also_a_developer");
+
+// Click Event listener on the Button
+button.addEventListener("click", function () {
+  const text = document.querySelector("textarea").value;
+  // console.log(text.toUpperCase());
+});
+
+// ES6 DEFAULT PARAMETER
+
+// const bookings;
+const boardPassenger = function (
+  planeNo,
+  numPassenger = 1,
+  price = 1900 * numPassenger
+) {
+  const booking = {
+    planeNo, // calling the methods without using the planeNo:planeNo method
+    numPassenger,
+    price,
+  };
+
+  console.log(booking);
+};
+
+boardPassenger("LH210");
+boardPassenger("LH210", 2);
