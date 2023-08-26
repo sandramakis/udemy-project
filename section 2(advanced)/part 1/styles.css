@@ -48,3 +48,11 @@ button a {
   color: #eee;
   text-decoration: none;
 }
+
+section {
+  padding: 2rem;
+}
+
+section button:hover {
+  opacity: 0.9;
+}

@@ -689,3 +689,92 @@ const boardPassenger = function (
 
 boardPassenger("LH210");
 boardPassenger("LH210", 2);
+
+// FUNCTIONS CALLING OTHER FUNCTIONS
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+// Calling the greet(){}
+const greetingMessage = greet("Hey");
+greetingMessage("Makis"); //Hey Makis
+
+// OR
+greet("Hi")("Makis"); //Hi Makis
+
+// Functions calling other functions (ARROW Method)
+const greetArrw = (greeting) => (name) =>
+  console.log(console.log(`${greeting} ${name}`));
+
+greetArrw("Hello")("Chiamaka");
+
+// CALL, APPLY AND BIND METHODS
+const laufhansa = {
+  airline: "Laufhansa Airline",
+  iataCode: "LH",
+  bookings: [],
+  book(flightNum, passenger) {
+    this.bookings.push({
+      flight: `${this.iataCode}${flightNum}`,
+      name: `${passenger}`,
+    });
+    return console.log(
+      `${passenger} has booked a flight on ${this.iataCode}${flightNum}`
+    );
+  },
+};
+
+laufhansa.book(254, "Sandra Makis");
+laufhansa.book(32, "Ikechukwu Eze");
+console.log(laufhansa.bookings);
+
+// call()
+// The call method allows you to borrow a functon from the method in which it is called. In this case, the laufhansa.book function is being called on the eurowings.
+// SYNTAX: originalMethod(borrowing method, parameters)
+const eurowings = {
+  airline: "Eurowings Airline",
+  iataCode: "EW",
+  bookings: [],
+};
+
+console.log(eurowings.bookings);
+
+const bookEW = laufhansa.book;
+bookEW.call(eurowings); //This returns undefined in flightNum and passenger b/c their values are not yet set
+
+bookEW.call(eurowings, 322, "MaryPeace Onyinye"); // MaryPeace Onyinye has booked a flight on EW322
+
+// apply()
+//  It takes arguments from an array
+const flightData = [58, "George Cooper"];
+bookEW.apply(eurowings, flightData); // George Cooper has booked a flight on EW58
+// The spread operator can be used as well
+bookEW.call(eurowings, ...flightData);
+
+// bind()
+// 1. The bind method returns a function that takes in the arguments of a given parameter.
+const bookEW2 = laufhansa.book.bind(eurowings);
+bookEW2(321, "Mary Cooper"); //Mary Cooper has booked a flight on EW321
+// 2. bind() can be used to set arguments on stone
+const bookEW3 = laufhansa.book.bind(eurowings, 225);
+bookEW3("Ikechukwu Eze");
+bookEW3("Sandra Nwakeze");
+
+// Higher Order Function(Event Listeners)
+laufhansa.planes = 200;
+console.log(laufhansa);
+
+laufhansa.buyPlane = function () {
+  this.planes++;
+  console.log(this.planes);
+};
+console.log(laufhansa.planes);
+
+document.querySelector(".buy").addEventListener("click", laufhansa.buyPlane); // This returns a NAN because the function calling the function is ".buy"
+
+// SOLUTION
+document
+  .querySelector(".buy")
+  .addEventListener("click", laufhansa.buyPlane.bind(laufhansa));
