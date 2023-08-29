@@ -813,24 +813,6 @@ const poll = {
       answer < this.options.length && //using short circuting
       this.answers[answer]++;
 
-    // let sum = this.answers[answer]; // starting with 0
-
-    // if (answer === 0) {
-    //   sum += 1;
-    //   this.answers[answer] = sum;
-    // } else if (answer === 1) {
-    //   sum += 1;
-    //   this.answers[answer] = sum;
-    // } else if (answer === 2) {
-    //   sum += 1;
-    //   this.answers[answer] = sum;
-    // } else if (answer === 3) {
-    //   sum += 1;
-    //   this.answers[answer] = sum;
-    // } else {
-    //   console.log("Try again!");
-    // }
-
     this.displayResults("string");
     return this.displayResults();
   },
