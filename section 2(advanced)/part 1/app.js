@@ -586,7 +586,7 @@ console.log("makis amaka".split(" "));
 
 const [firstName, middleName] = "Chiamaka Sandra".split(" ");
 const nameStr = ["Miss.", firstName, middleName.toUpperCase()].join(" ");
-console.log(nameStr);
+console.log(nameStr); //Miss. Chiamaka SANDRA
 
 // Captialize the first letters of given input names
 const capitalizeName = function (name) {
@@ -778,3 +778,85 @@ document.querySelector(".buy").addEventListener("click", laufhansa.buyPlane); //
 document
   .querySelector(".buy")
   .addEventListener("click", laufhansa.buyPlane.bind(laufhansa));
+
+// CODE CHALLENGE #5
+/**
+ * 1. Create a method called registerNewAnswer on the poll object. The method does two things
+ * Display a prompt window for the user to input the selected option
+ ** Based on the user's input, add increase the value at the poosition by 1.
+ * 2. Call this method whenever the user clicks the Answer 'poll button'
+ * 3. Create a method 'displayResults' which displayes the poll results. It should take an input called 'type' and display the results either as an array or as string. Eg: Poll results are 13,2,4,1'
+ * 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call
+ * BONUS: Use the 'displayResults' method to display the two arrays in the following test data. Ue both the 'array' and the 'string' option
+ * BONUS TEST DATA1 1: [5,2,3]
+ * BONUS TEST DATA1 1: [5,1,5,3,9,6,1]
+ */
+
+//  SOLUTION
+const poll = {
+  question: "What is your favorite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  answers: new Array(4).fill(0),
+
+  // Get answer
+  registerNewAnswer() {
+    let answer = Number(
+      prompt(`${this.question}
+      ${this.options.join(`
+      `)}
+    (Write option number)`)
+    );
+
+    // Register answer
+
+    typeof answer === "number" &&
+      answer < this.options.length && //using short circuting
+      this.answers[answer]++;
+
+    // let sum = this.answers[answer]; // starting with 0
+
+    // if (answer === 0) {
+    //   sum += 1;
+    //   this.answers[answer] = sum;
+    // } else if (answer === 1) {
+    //   sum += 1;
+    //   this.answers[answer] = sum;
+    // } else if (answer === 2) {
+    //   sum += 1;
+    //   this.answers[answer] = sum;
+    // } else if (answer === 3) {
+    //   sum += 1;
+    //   this.answers[answer] = sum;
+    // } else {
+    //   console.log("Try again!");
+    // }
+
+    this.displayResults("string");
+    return this.displayResults();
+  },
+
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers); //[0, 0, 1, 0]
+    } else if (type === "string") {
+      console.log(`Poll results are ${[...this.answers].join(", ")}`); //Poll results are 0, 1, 1, 0
+    } else console.log("Wetin you type abeg?🤷‍♂️");
+  },
+};
+console.log(poll);
+
+// When user clicks the 'Answer poll' button
+document
+  .querySelector(".answer-poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+//Using the 'displayResult' method to display the arrays in the test data (without calling the 'poll' object)
+// Create a new object with the 'answer' property for the 'displayResults' function to run properly.
+
+poll.displayResults.call({ answers: [5, 2, 3] });
+poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+poll.displayResults.call({ answers: [5, 1, 5, 3, 9, 6, 1] });
+poll.displayResults.call({ answers: [5, 1, 5, 3, 9, 6, 1] }, "string");
+
+poll.displayResults([5, 2, 3]);
+poll.displayResults([5, 1, 5, 3, 9, 6, 1]);
